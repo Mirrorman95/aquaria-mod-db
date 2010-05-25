@@ -1,6 +1,6 @@
 
 			<!--<div class="Menu">Menu/Topbar placeholder</div>-->
-			<img id="Image-Maps_5201005240014328" src="http://ssd.doesntexist.com:7777/dev_aquaria/system/themes/aquaria/images/menu.png" usemap="#menumap" border="0" width="780" height="40" alt="" />
+			<img id="Image-Maps_5201005240014328" src="<?php echo $this->getBasePath() ?>/system/themes/aquaria/images/menu.png" usemap="#menumap" border="0" width="780" height="40" alt="" />
 			<map id="Menumap" name="menumap">
 				<area shape="rect" coords="38,4,123,35" href="<?php print($this->getBasePath()); ?>" alt="Home" title="Home"/>
 				<area shape="rect" coords="203,4,330,35" href="<?php print($this->getBasePath()); ?>mods.html" alt="Mod List" title="Mod List"/>
