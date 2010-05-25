@@ -1,0 +1,15 @@
+Options +FollowSymLinks -Indexes
+#IndexIgnore */*
+# Turn on the RewriteEngine
+RewriteEngine On
+#  Rules
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /usb/dev/index.php
+RewriteRule . /dev_aquaria/index.php
+ErrorDocument 403 /403page.php
+
+# 480 weeks
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+Header set Cache-Control "max-age=29030400, public"
+</FilesMatch>
