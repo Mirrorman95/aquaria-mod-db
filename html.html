@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<link href="main2.css" rel="stylesheet" type="text/css" />
+
+<!--[if lte IE 6]>
+<link href="ie.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+</head>
+
+<body>
+
+<div id="header">
+<div id="logo"></div>
+<div id="headert">
+	<span class="center"><?php echo $this->title("site"); ?></span>
+</div>
+<div class="login"><?php 
+/* Start Logout*/
+		 if ($user->data['is_registered']){
+		 $user->get_profile_fields($user->data['user_id']);
+			
+//If they have the field set, use it
+		$user->get_profile_fields( $user->data['user_id'] );
+		if (!empty($user->profile_fields['pf_fullname']))
+			$c = $user->profile_fields['pf_fullname'];
+		else
+			$c = $user->data['username'];
+		 echo("Welcome back ".$c."! <a href=".$phpbb_root_path.'ucp.php?mode=logout&amp;sid='.$user->data['session_id'].'&amp;redirect='.$this->curPageURL().">Logout</a>");
+		 }
+		/*End Logout*/
+
+		 /*Start Login Box*/
+		 if (!$user->data['is_registered']){
+					echo("<form method='post' action='".$phpbb_root_path."ucp.php?mode=login'>");
+					echo(" Username:");
+					//echo("<br />");
+					echo(" <input type='text' name='username' size='15' value=''>");
+					//echo("<br /><br />");
+					echo(" Password:");
+					//echo("<br />");
+					echo(" <input type='password' name='password' size='15' value=''>");
+					//echo("<br /><br />");
+					echo("<input type='submit' name='login' value='Login'>");
+					echo("<input type='hidden' name='redirect' value='".$this->curPageURL()."'>"); 
+					echo(/*"<br />*/"</form>");
+		   }
+		  /*End Login Box*/
+?></div>
+</div> <!-- closing #header" -->
+
+<div id="outer">
+
+<div id="clearheader">
+<!-- used to make room for the #header -->
+</div>
+
+<div id="left">
+<p>left sidebar here</p>
+<p>left sidebar here</p>
+<p>left sidebar here</p>
+<p>left sidebar here</p>
+<p>left sidebar here</p>
+<p>left sidebar here</p>
+<p>left sidebar here</p>
+</div> <!-- closing #left -->
+
+<div id="middle">
+<?php include($this->ic()); echo $this->CD() ?>
+</div> <!-- closing #middle -->
+
+<div id="right">
+Latest posts on the Bulletin Board<br /><?php
+foreach($nArray as $a) {
+        echo $a; 
+    }
+	if(!function_exists('get_upcbirthdays'))
+	{	
+		include($phpbb_root_path . 'includes/functions_upcbirthdays.' . $phpEx);
+	}
+	$get = get_upcbirthdays();
+	echo "<div style='clear: both;'>";
+	if ($get['BIRTHDAYS_AHEAD_LIST'] != '')
+	{
+		echo $get['L_BIRTHDAYS_AHEAD'].": <strong>";
+		echo $get['BIRTHDAYS_AHEAD_LIST']."</strong>";
+	}
+	else
+	{
+		echo "Nobody has a birthday coming up.";
+	}
+	echo "<br /><br />";
+	foreach (obtain_users_online_string(obtain_users_online()) as $var => $val)
+	{
+		echo "{$val}<br />";
+	}
+    ?>
+	<br /><br /><br /></div>
+</div> <!-- closing #right -->
+
+<div id="clearfooter">
+<!-- used to make room for the #footer -->
+</div>
+
+</div> <!-- closing #outer -->
+
+<div id="footer">
+<div style="margin:5px;">Site design and layout Copyright &copy; Colton Wolkins 2010<!--&ndash;<?php echo date('Y'); ?>--></div>
+</div> <!-- closing #footer -->
+
+</body>
+</html>
