@@ -8,6 +8,9 @@ body {
 	background-image:url("../images/bg.jpg");
 	background-repeat:repeat-x;
 }
+a {
+	color:#ff9900;
+}
 div#content {
 	width:780px;
 	/*background-color:#FF4400;*/
@@ -74,5 +77,17 @@ div#content .Menu {
 	height:40px;
 	position:relative;
 	background-image:url("../images/tempmenu.png");
+}
+div#content .footer {
+	height: 30px;
+	text-align:center;
+}
+div.ModName {
+}
+div.ModDescription {
+}
+div.ModPicture {
+	margin: 0 0 10px 10px;
+	float:left;
 }
 <?php ob_end_flush(); ?>
