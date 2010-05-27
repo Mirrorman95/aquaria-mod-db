@@ -126,8 +126,15 @@ function alphaID($in, $to_num = false, $pad_up = false, $passKey = null)
 }
 if(!empty($_FILES['zip']) && isset($_POST['nom']) && $_POST['nom'] != "")
 {
-	$con = mysql_connect("localhost", "aquaria", "data");
-	mysql_select_db("aqmoddb",$con);
+	$file = $_FILES['zip'];
+	$allowedExtensions = array("zip","rar","tar","gz","bz2","7z"); 
+	if ($file['tmp_name'] > '') { 
+      if (!in_array(end(explode(".", strtolower($file['name']))), $allowedExtensions)) { 
+       die('<script type="text/javascript">$(document).ready(function(){$.fn.colorbox({width:"50%", html:"<b>Error!<br />'.$file['name'].' is not an archive file.</b>", open:true});});</script>'); 
+      }
+	}
+	$con = $this->dbConnect();
+	$this->dbSelect();
 	$result = mysql_query("SHOW TABLE STATUS LIKE 'mods'");
 	if($result && mysql_num_rows($result))
 	{
@@ -142,15 +149,25 @@ if(!empty($_FILES['zip']) && isset($_POST['nom']) && $_POST['nom'] != "")
 	$pic = null;
 	if(!empty($_FILES['pic']))
 	{
-		$temp = pathinfo($_FILES['pic']['name']);
-		$_FILES['pic']['name'] = alphaID($max_id,false,5).".".$temp['extension'];
-		move_uploaded_file($_FILES['pic']['tmp_name'], getcwd()."/media/mods/".$_FILES['pic']['name']);
-		$pic = $temp['extension'];
+		$file = $_FILES['zip'];
+		$allowedExtensions = array("zip","rar","tar","gz","bz2","7z"); 
+		if ($file['tmp_name'] > '') { 
+			if (in_array(end(explode(".", strtolower($file['name']))), $allowedExtensions)) { 
+				$i = getimagesize($_FILES['pic']['tmp_name']);
+				if($i[0]<=100 && $i[1] <= 100)
+				{
+					$temp2 = pathinfo($_FILES['pic']['name']);
+					$_FILES['pic']['name'] = alphaID($max_id,false,5).".".$temp2['extension'];
+					move_uploaded_file($_FILES['pic']['tmp_name'], getcwd()."/media/mods/".$_FILES['pic']['name']);
+					$pic = $temp2['extension'];	
+				}
+			}
+		}
 	}
 	$_POST["nom"] = addslashes($_POST["nom"]);
 	$_POST["aname"] = addslashes($_POST["aname"]);
-	$_POST["desc"] = addslashes($_POST["desc"]);
-	$query = "INSERT INTO mods (mname, aname, mpicture, mfile, mdesc) VALUES (\"{$_POST["nom"]}\", \"{$_POST["aname"]}\", \"{$pic}\", \"{$zipname}\", \"{$_POST["desc"]}\")";
+	$_POST["desc"] = nl2br(strip_tags(addslashes($_POST["desc"])),true);
+	$query = "INSERT INTO mods (mname, aname, mpicture, mfile, mdesc, mext) VALUES (\"{$_POST["nom"]}\", \"{$_POST["aname"]}\", \"{$pic}\", \"{$zipname}\", \"{$_POST["desc"]}\", \"{$temp['extension']}\")";
 	//echo $query;
 	if(move_uploaded_file($_FILES['zip']['tmp_name'], getcwd()."/media/mods/".$_FILES['zip']['name']) && mysql_query($query,$con))
 	{
@@ -160,20 +177,51 @@ if(!empty($_FILES['zip']) && isset($_POST['nom']) && $_POST['nom'] != "")
 	else
 	{
 		//upload failed
-		echo '<script type="text/javascript">$(document).ready(function(){$.fn.colorbox({width:"50%", html:"<b>Mod upload failed!</b>", open:true});});</script>';
+		echo '<script type="text/javascript">$(document).ready(function(){$.fn.colorbox({width:"50%", html:"<b>Mod upload failed!</b><br />Known reasons why it could fail:<ul><li>Couldn\'t connect to the database</li><li>You forgot to enter in information</li><li>", open:true});});</script>';
 	}
 }
 else
 {
 ?>
 <?php } ?>
+			<script type="text/javascript">
+			function validate_required(field,alerttxt)
+			{
+				with (field)
+				{
+					if (value==null||value=="")
+					{
+						alert(alerttxt);return false;
+					}
+					else
+					{
+						return true;
+					}
+				}
+			}
+
+			function validate_form(thisform)
+			{
+				with (thisform)
+				{
+					if (validate_required(nom,"Mod must have a name!")==false)
+					{nom.focus();return false;}
+					if (validate_required(aname,"You know, ever thing has an author, and every author has a NAME!")==false)
+					{aname.focus();return false;}
+					if (validate_required(zip,"There must be a mod file to be uploaded!")==false)
+					{zip.focus();return false;}
+					if (validate_required(desc,"Description must be filled out!")==false)
+					{desc.focus();return false;}
+				}
+			}
+			</script>
 			<h1>Post a Mod</h1>
 			<p>Thank you for helping us fill our database with new Aquaria Mods! Please fill out the form below and submit to see your mod in the Mods section of the Mod DB.</p>
-			<form enctype="multipart/form-data" action="postmod.html" method="post" id="addmod">
+			<form enctype="multipart/form-data" action="postmod.html" method="post" id="addmod" onsubmit="return validate_form(this)">
 				<table style="margin: 0 auto;">
 					<tr>
 						<td>
-							<label for="NoM">Name of the Mod:</label>
+							<label for="nom">Name of the Mod:</label>
 						</td>
 						<td>
 							<input type="text" id="nom" name="nom"></input>
@@ -181,34 +229,34 @@ else
 					</tr>
 					<tr>
 						<td>
-							<label for="AN">Author Name:</label>
+							<label for="aname">Author Name:</label>
 						</td>
 						<td>
-							<input type="text" id="AN" name="aname"></input>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="Pic">Picture:</label>
-						</td>
-						<td>
-							<input type="file" id="Pic" name="pic"></input>
+							<input type="text" id="aname" name="aname"></input>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="Zip">File (zip):</label>
+							<label for="pic">Picture:</label>
 						</td>
 						<td>
-							<input type="file" id="zip" name="zip"></input>
+							<input type="file" id="pic" name="pic"></input>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="Des">Description:</label>
+							<label for="zip">File (zip):</label>
 						</td>
 						<td>
-							<textarea id="Des" name="desc"></textarea>
+							<input type="file" id="zip" name="zip" accept="application/zip"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="desc">Description:</label>
+						</td>
+						<td>
+							<textarea id="desc" name="desc"></textarea>
 						</td>
 					</tr>
 					<tr>

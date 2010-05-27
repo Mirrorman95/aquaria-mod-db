@@ -82,12 +82,27 @@ div#content .footer {
 	height: 30px;
 	text-align:center;
 }
-div.ModName {
+div#content .content {
+	margin: 0 10px 0 10px;
 }
-div.ModDescription {
+div#mods .ModName a {
+	color:grey;
 }
-div.ModPicture {
-	margin: 0 0 10px 10px;
+div#mods .ModName span.ModAuthor {
+	font-size:75%;
+	color:#ff9900;
+}
+div#mods .ModDescription {
+	margin: 0 0 10px 120px;
+}
+div#mods .ModPicture {
+	margin: 0 0 0 10px;
 	float:left;
+}
+div#mods .filelist {
+	background-color:#222222;
+}
+div#mods .filelist .toggle {
+	float:right;
 }
 <?php ob_end_flush(); ?>

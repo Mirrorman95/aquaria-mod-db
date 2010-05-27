@@ -4,6 +4,10 @@ $dirs = $_SERVER['SCRIPT_NAME'];
 global $SiteTitle;
 global $CurrentTheme;
 global $InstallPath;
+global $dbhost;
+global $dbuser;
+global $dbpass;
+global $dbname;
 class Axial_UrlInterpreter 
 {
 	var $basePath = "";
@@ -207,6 +211,18 @@ class Axial_UrlInterpreter
 		global $InstallPath;
 		global $CurrentTheme;
 		return $InstallPath."system/themes/".$CurrentTheme."/";
+	}
+	function dbConnect()
+	{
+		global $dbhost;
+		global $dbuser;
+		global $dbpass;
+		return mysql_connect($dbhost, $dbuser, $dbpass);
+	}
+	function dbSelect()
+	{
+		global $dbname;
+		mysql_select_db("aqmoddb");
 	}
 }
 $urlInterpreter = new Axial_UrlInterpreter();
