@@ -12,3 +12,7 @@ $InstallPath = "http://ssd.doesntexist.com:7777/dev_aquaria/";
 $SiteTitle = "Aquaria Mod DB";
 $CurrentTheme = "Aquaria";
 $Compression = true;
+$dbhost = "localhost";
+$dbuser = "aquaria";
+$dbpass = "";
+$dbname = "aqmoddb";
