@@ -136,6 +136,7 @@ EOF;
 							else
 								$(".toggle").text("[show]");
 							});
+							$("#moddownload").blend({reverse:true});
 						});
 					</script>
 					<div class="mod">
@@ -152,6 +153,9 @@ EOF;
 									</div>
 								</div>
 							</div>
+								<div id="modbuttons">
+									<a id="moddownload" href="media/mods/{$row["mfile"]}.{$row["mext"]}"></a>
+								</div>
 						</div>
 					</div>
 EOF;

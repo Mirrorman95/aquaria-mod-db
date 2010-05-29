@@ -105,4 +105,19 @@ div#mods .filelist {
 div#mods .filelist .toggle {
 	float:right;
 }
+
+#modbuttons {
+	text-align:center;
+}
+#moddownload {
+	display:block;
+	width:200px;
+	height:50px;
+	background-image:url("../images/download.png");
+	background-repeat:no-repeat;
+	cursor:pointer;
+	margin:0 auto;
+}
+#moddownload{background-position:0 0;}
+#moddownload:hover,#moddownload.hover{background-position:0 -51px;}
 <?php ob_end_flush(); ?>

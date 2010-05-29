@@ -5,6 +5,7 @@
 		<link type="text/css" media="screen" rel="stylesheet" href="<?php echo $this->getBasePath() ?>media/colorbox.css.php" />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo $this->getBasePath() ?>media/jquery.colorbox-min.js"></script>
+		<script type="text/javascript" src="<?php echo $this->getBasePath() ?>media/jquery.blend-min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				//Examples of how to assign the ColorBox event to elements
