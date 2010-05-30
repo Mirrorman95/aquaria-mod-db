@@ -29,7 +29,7 @@ EOF;
 				$r = mysql_fetch_row($result2);
 				$numrows = $r[0];
 				
-				$rowsperpage = 10;
+				$rowsperpage = 5;
 				$totalpages = ceil($numrows / $rowsperpage);
 				
 				if (isset($_GET['p']) && is_numeric($_GET['p'])) {
@@ -136,7 +136,7 @@ EOF;
 							else
 								$(".toggle").text("[show]");
 							});
-							$("#moddownload").blend({reverse:true});
+							$("#moddownload").blend();
 						});
 					</script>
 					<div class="mod">
