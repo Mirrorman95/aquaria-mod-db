@@ -113,11 +113,11 @@ div#mods .filelist .toggle {
 	display:block;
 	width:200px;
 	height:50px;
-	background-image:url("../images/download.png");
+	background-image:url("../images/download3.png");
 	background-repeat:no-repeat;
 	cursor:pointer;
 	margin:0 auto;
 }
-#moddownload{background-position:0 0;}
-#moddownload:hover,#moddownload.hover{background-position:0 -51px;}
+#moddownload{background-position:0 -51px;}
+#moddownload:hover,#moddownload.hover{background-position:0 0;}
 <?php ob_end_flush(); ?>

@@ -14,5 +14,5 @@ $CurrentTheme = "Aquaria";
 $Compression = true;
 $dbhost = "localhost";
 $dbuser = "aquaria";
-$dbpass = "";
+$dbpass = "data";
 $dbname = "aqmoddb";
