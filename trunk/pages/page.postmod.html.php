@@ -144,9 +144,11 @@ if(!empty($_FILES['zip']) && isset($_POST['nom']) && $_POST['nom'] != "")
 	else
 		die('<script type="text/javascript">$(document).ready(function(){$.fn.colorbox({width:"50%", html:"<b>Error! Cannot contact the database.</b>", open:true});});</script>');
 	$temp = pathinfo($_FILES['zip']['name']);
-	$_FILES['zip']['name'] = alphaID($max_id,false,5).".".$temp['extension'];
-	$zipname = alphaID($max_id,false,5);
+	$_FILES['zip']['name'] = str_replace(' ', '', basename($_FILES['zip']['name'],".".$temp['extension'])).".".$temp['extension'];
+	$zipname = str_replace(' ', '', basename($_FILES['zip']['name'],".".$temp['extension']));
 	$pic = null;
+	$mfile = alphaID($max_id,false,5);
+	mkdir(getcwd()."/media/mods/".$mfile."/");
 	if(!empty($_FILES['pic']))
 	{
 		$file = $_FILES['zip'];
@@ -158,7 +160,7 @@ if(!empty($_FILES['zip']) && isset($_POST['nom']) && $_POST['nom'] != "")
 				{
 					$temp2 = pathinfo($_FILES['pic']['name']);
 					$_FILES['pic']['name'] = alphaID($max_id,false,5).".".$temp2['extension'];
-					move_uploaded_file($_FILES['pic']['tmp_name'], getcwd()."/media/mods/".$_FILES['pic']['name']);
+					move_uploaded_file($_FILES['pic']['tmp_name'], getcwd()."/media/mods/{$mfile}/".$_FILES['pic']['name']);
 					$pic = $temp2['extension'];	
 				}
 			}
@@ -169,7 +171,7 @@ if(!empty($_FILES['zip']) && isset($_POST['nom']) && $_POST['nom'] != "")
 	$_POST["desc"] = nl2br(strip_tags(addslashes($_POST["desc"])),true);
 	$query = "INSERT INTO mods (mname, aname, mpicture, mfile, mdesc, mext) VALUES (\"{$_POST["nom"]}\", \"{$_POST["aname"]}\", \"{$pic}\", \"{$zipname}\", \"{$_POST["desc"]}\", \"{$temp['extension']}\")";
 	//echo $query;
-	if(move_uploaded_file($_FILES['zip']['tmp_name'], getcwd()."/media/mods/".$_FILES['zip']['name']) && mysql_query($query,$con))
+	if(move_uploaded_file($_FILES['zip']['tmp_name'], getcwd()."/media/mods/{$mfile}/".$_FILES['zip']['name']) && mysql_query($query,$con))
 	{
 		//upload succeeded
 		echo '<script type="text/javascript">$(document).ready(function(){$.fn.colorbox({width:"50%", html:"<b>Mod submitted!</b>", open:true});});</script>';

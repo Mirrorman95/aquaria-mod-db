@@ -222,7 +222,7 @@ class Axial_UrlInterpreter
 	function dbSelect()
 	{
 		global $dbname;
-		mysql_select_db("aqmoddb");
+		mysql_select_db($dbname);
 	}
 }
 $urlInterpreter = new Axial_UrlInterpreter();

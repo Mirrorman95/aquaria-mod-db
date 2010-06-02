@@ -1,4 +1,4 @@
-				Welcome to Aquaria new Online Mod Database. Currently this is just a layout of the overall site. Sadly, there are no examples of mods or mockups available :(. This setup does work so far though :D. <a href="dummy">Lorem Ipsum Page</a>.
+				Welcome to Aquaria new Online Mod Database. Currently this is just a layout of the overall site. Sadly, there are no examples of mods or mockups available :(. This setup does work so far though :D.
 				<?php /*
 <div style="text-align:center; width:780px; margin-left:auto; margin-right:auto;">
 <img id="Image-Maps_5201005240014328" src="http://ssd.doesntexist.com:7777/dev_aquaria/system/themes/aquaria/images/menu.png" usemap="#Image-Maps_5201005240014328" border="0" width="780" height="40" alt="" />
