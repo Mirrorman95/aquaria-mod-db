@@ -159,7 +159,7 @@ EOF;
 				$r = mysql_fetch_row($result2);
 				$numrows = $r[0];
 				
-				$rowsperpage = 5;
+				$rowsperpage = 10;
 				$totalpages = ceil($numrows / $rowsperpage);
 				
 				if (isset($_GET['p']) && is_numeric($_GET['p'])) {
