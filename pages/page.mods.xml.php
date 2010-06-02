@@ -128,16 +128,6 @@ function alphaID($in, $to_num = false, $pad_up = false, $passKey = null)
 }
 ?>
 <?php echo '<?xml version="1.0"?>'; ?>
-
-<!DOCTYPE mods [
-<!ELEMENT mods (mod)>
-<!ELEMENT mod (name,author,image,file,description)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT author (#PCDATA)>
-<!ELEMENT image (#PCDATA)>
-<!ELEMENT file (#PCDATA)>
-<!ELEMENT description (#PCDATA)>
-]>
 <mods>
 <?php
 $this->dbConnect();
