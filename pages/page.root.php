@@ -1,5 +1,9 @@
-				Welcome to Aquaria new Online Mod Database. Currently this is just a layout of the overall site. Sadly, there are no examples of mods or mockups available :(. This setup does work so far though :D.
+				Welcome to Aquaria new Online Mod Database. Currently this is just a layout of the overall site. We can have a few mods you can browse with our setup. The theme is not final: you can see an (incomplete) mockup in <a href="http://dl.dropbox.com/u/102670/temp/Aquaria%20Mod%20DB.png">Lady-Succubus's dropbox</a>. =^<a href="https://www.dropbox.com/referrals/NTEwMjY3MDk">.</a>^=
 				<?php /*
+
+				Why do we have such a massive block of comments here? xD
+						~ Lady-Succubus
+				
 <div style="text-align:center; width:780px; margin-left:auto; margin-right:auto;">
 <img id="Image-Maps_5201005240014328" src="http://ssd.doesntexist.com:7777/dev_aquaria/system/themes/aquaria/images/menu.png" usemap="#Image-Maps_5201005240014328" border="0" width="780" height="40" alt="" />
 <map id="_Image-Maps_5201005240014328" name="Image-Maps_5201005240014328">
