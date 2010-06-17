@@ -17,7 +17,7 @@
 			<li class="Download"><a href="<?php echo $this->getBasePath(); ?>mods.html">Download</a></li>
 			<li class="Submit"><a href="<?php echo $this->getBasePath(); ?>postmod.html">Submit</a></li>
 			<li class="About"><a href="<?php echo $this->getBasePath(); ?>about.html">About</a></li>-->
-			<?php MenuPlugin::getMenu("current"); ?>
+			<?php MenuPlugin::getPlugin()->getMenu("current"); ?>
 		<ul>
 	</div></div>
 	<div id="page">
