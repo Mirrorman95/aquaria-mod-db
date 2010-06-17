@@ -12,7 +12,7 @@
 				$("a[rel='cbox_view']").colorbox({rel:'nofollow'});
 			});
 		</script>
-		<link type="text/css" media="screen" rel="stylesheet" href="<?php echo $this->themePath() ?>media/main.css.php" />
+		<link type="text/css" media="screen" rel="stylesheet" href="<?php echo $this->themePath() ?>media/main.css.php" /><plugins content="headers" />
 	</head>
 	<body>
 		<script type="text/Javascript">

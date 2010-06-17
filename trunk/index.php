@@ -62,8 +62,14 @@ class Axial_UrlInterpreter
 		{
 			$this->inc = 'pages/page.'.$this->Function.'.php';
 		}
-		else{
-		$this->inc = 'pages/page.'.$controllerName.'.php';}
+		elseif($controllerName == "index.html" && $this->Function != "index.php")
+		{
+			$this->inc = 'pages/page.root.php';
+		}
+		else
+		{
+			$this->inc = 'pages/page.'.$controllerName.'.php';
+		}
 		$controllerClass = $controllerName."Controller";
 		include('root.php');
 	}
@@ -225,6 +231,13 @@ class Axial_UrlInterpreter
 		mysql_select_db($dbname);
 	}
 }
+include('system/system.plugin.php'); 
+//$pluginManager = new pluginManager();
+pluginManager::getPM();
+pluginManager::getPM()->loadDefaultPlugins();
+//pluginManager::getPM()->load("Auth2");
+//$pluginManager->loadDefaultPlugins();
+//pluginManager::Load("system.pluginmanager.inc.php");
 $urlInterpreter = new Axial_UrlInterpreter();
 $urlInterpreter->basePath = $InstallPath;
 $BasePath = $urlInterpreter->getBasePath();

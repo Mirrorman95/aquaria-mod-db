@@ -1,5 +1,57 @@
 <?php
 include("config.php");
+
+function callback($buffer, $mode)
+{
+	$load = pluginManager::getPM()->loadedPlugins();
+	$CSS = "";
+	$FOOT = "";
+	foreach($load as $loaded)
+	{
+		$loaded=$loaded."Plugin";
+		$Stylesheets = $loaded::getPlugin()->getCSS();
+		foreach($Stylesheets as $stylesheet)
+		{
+			if($stylesheet != "")
+				$CSS .= <<<EOF
+
+		{$stylesheet}
+EOF;
+		}
+		/*$footer = $loaded::getPlugin()->getFooter();
+		foreach($Stylesheets as $stylesheet)
+		{
+			if($stylesheet != "")
+				$CSS .= <<<EOF
+
+		{$stylesheet}
+EOF;
+		}*/
+	}
+	$output = str_ireplace("<plugins content=\"headers\" />", $CSS, $buffer);
+	$output = str_ireplace("<plugins content=\"footers\" />", $FOOT, $output);
+	return ob_gzhandler($output, $mode);
+}
+function callback2($buffer, $mode)
+{
+	$load = pluginManager::getPM()->loadedPlugins();
+	$CSS = "";
+	foreach($load as $loaded)
+	{
+		$loaded=$loaded."Plugin";
+		$Stylesheets = $loaded::getPlugin()->getCSS();
+		foreach($Stylesheets as $stylesheet)
+		{
+			if($stylesheet != "")
+				$CSS .= <<<EOF
+		{$stylesheet}
+EOF;
+		}
+	}
+	$output = str_ireplace("<plugins />", $CSS, $buffer);
+	return $output;
+}
+
 $content = file($this->ic());
 //First line: $content[0];
 $content[0] = $content[0]."\n";
@@ -16,24 +68,26 @@ if($templateExists)
 {
 	if($compressionExists)
 	{
-		ob_start('ob_gzhandler');
+		ob_start('callback');
 		//echo "Compressing";
 	}
-	eval("?>".implode("", $content));
-	if($compressionExists)
+	else
 	{
-		ob_end_flush();
+		ob_start('callback2');
 	}
+	eval("?>".implode("", $content));
+	ob_end_flush();
 }
 else
 {
 	if($compressionExists)
 	{
-		ob_start('ob_gzhandler');
+		ob_start('callback');
+	}
+	else
+	{
+		ob_start('callback2');
 	}
 	$this->ThemeParser(implode("", $content));
-	if($compressionExists)
-	{
-		ob_end_flush();
-	}
+	ob_end_flush();
 }
