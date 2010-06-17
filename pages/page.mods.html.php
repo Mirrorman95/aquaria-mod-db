@@ -241,7 +241,7 @@ EOF;
 				$row = mysql_fetch_assoc($result2);
 				$zip = new ZipArchive; 
 				$zcontent = "";
-				if ($zip->open("media/mods/{$row["mfile"]}.zip")) 
+				if ($zip->open("media/mods/".alphaID($_GET["file"],false,5)."/{$row["mfile"]}.zip")) 
 				{ 
 					 for($i = 0; $i < $zip->numFiles; $i++) 
 					 {   
