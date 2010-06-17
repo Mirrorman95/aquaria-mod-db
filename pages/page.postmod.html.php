@@ -166,9 +166,11 @@ if(!empty($_FILES['zip']) && isset($_POST['nom']) && $_POST['nom'] != "")
 			}
 		}
 	}
-	$_POST["nom"] = addslashes($_POST["nom"]);
-	$_POST["aname"] = addslashes($_POST["aname"]);
-	$_POST["desc"] = nl2br(strip_tags(addslashes($_POST["desc"])),true);
+	$_POST["nom"] = mysql_real_escape_string($_POST["nom"]);
+	$_POST["aname"] = mysql_real_escape_string($_POST["aname"]);
+	$_POST["desc"] = mysql_real_escape_string(nl2br(strip_tags($_POST["desc"])),true);
+	$pic=mysql_real_escape_string($pic);
+	$zipname=mysql_real_escape_string($zipname);
 	$query = "INSERT INTO mods (mname, aname, mpicture, mfile, mdesc, mext) VALUES (\"{$_POST["nom"]}\", \"{$_POST["aname"]}\", \"{$pic}\", \"{$zipname}\", \"{$_POST["desc"]}\", \"{$temp['extension']}\")";
 	//echo $query;
 	if(move_uploaded_file($_FILES['zip']['tmp_name'], getcwd()."/media/mods/{$mfile}/".$_FILES['zip']['name']) && mysql_query($query,$con))

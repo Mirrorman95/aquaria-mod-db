@@ -1,0 +1,48 @@
+div.AuthPlugin{
+	clear:both;
+	margin: 20px auto;
+	width: 360px;
+	border: 1px dotted #333;
+}
+
+div.AuthPlugin div.row
+{
+	clear: both;
+	padding-top: 5px;
+}
+
+div.AuthPlugin div.row span.label {
+	float: left;
+	width: 130px;
+	text-align: right;
+}
+
+div.AuthPlugin div.row span.formw {
+	float: right;
+	width: 205px;
+	text-align: left;
+} 
+div.AuthPlugin div.buttons
+{
+	float: left;
+	text-align:center;
+	width:100%;
+}
+div.AuthPlugin div.spacer {
+	clear: both;
+}
+.password {
+font-size : 12px;
+border : 1px solid #cc9933;
+width : 200px;
+font-family : arial, sans-serif;
+}
+.pstrength-minchar {
+font-size : 10px;
+}
+
+div.AuthPlugin2{
+	clear:both;
+	width: 330px;
+	border: 1px dotted #333;
+}
