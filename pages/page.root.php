@@ -1,4 +1,4 @@
-<p>Welcome to Aquaria new Online Mod Database. We can have a few mods you can browse with our example setup. This theme is not final: you can see an (incomplete) mockup in <a href="http://dl.dropbox.com/u/102670/temp/Aquaria%20Mod%20DB.png">Lady-Succubus's dropbox</a>. =^<a href="https://www.dropbox.com/referrals/NTEwMjY3MDk">.</a>^=</p><?php /*
+<p>Welcome to Aquaria new Online Mod Database. We can have a few mods you can browse with our example setup. This theme was designed specifically for the Aquaria Mod Database by the generous Lady-Succubus. =^.^=<?php /*
 
 				Why do we have such a massive block of comments here? xD
 						~ Lady-Succubus
