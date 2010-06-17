@@ -7,7 +7,7 @@ global $dbname;
 global $InstallPath;
 final class pluginManager {
 	private static $pluginManager;
-	private $__DEFAULT = "Auth";
+	private $__DEFAULT = "Auth, Menu";
 	private $loaded;
 	private $load;
 	function load($string)

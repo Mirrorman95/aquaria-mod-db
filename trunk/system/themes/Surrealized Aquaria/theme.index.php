@@ -13,10 +13,11 @@
 	<div id="header"><div>
 		<h1><a href="<?php echo $this->getBasePath(); ?>">Aquaria Mod&#124;Database</a></h1>
 		<ul id="menu">
-			<li class="home current"><a href="<?php echo $this->getBasePath(); ?>">Home</a></li>
-			<li class="download"><a href="<?php echo $this->getBasePath(); ?>mods.html">Download</a></li>
-			<li class="submit"><a href="<?php echo $this->getBasePath(); ?>postmod.html">Submit</a></li>
-			<li class="about"><a href="<?php echo $this->getBasePath(); ?>about.html">About</a></li>
+			<!--<li class="Home current"><a href="<?php echo $this->getBasePath(); ?>">Home</a></li>
+			<li class="Download"><a href="<?php echo $this->getBasePath(); ?>mods.html">Download</a></li>
+			<li class="Submit"><a href="<?php echo $this->getBasePath(); ?>postmod.html">Submit</a></li>
+			<li class="About"><a href="<?php echo $this->getBasePath(); ?>about.html">About</a></li>-->
+			<?php MenuPlugin::getMenu("current"); ?>
 		<ul>
 	</div></div>
 	<div id="page">

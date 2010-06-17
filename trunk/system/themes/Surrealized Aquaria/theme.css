@@ -1,4 +1,4 @@
-* { margin: 0; padding: 0; }
+* { margin: 0; padding: 0; } 
 
 html, body {
 	height: 100%;
@@ -62,22 +62,22 @@ body {
 				background: url(img/menu.png);
 			}
 		
-			#menu li.home a {
+			#menu li.Home a {
 				width: 124px;
 				background-position: 0 0;
 			}
 			
-			#menu li.download a {
+			#menu li.Download a {
 				width: 163px;
 				background-position: -124px 0;
 			}
 			
-			#menu li.submit a {
+			#menu li.Submit a {
 				width: 209px;
 				background-position: -287px 0;
 			}
 			
-			#menu li.about a {
+			#menu li.About a {
 				width: 104px;
 				background-position: -496px 0;
 			}
