@@ -1,6 +1,5 @@
 <?php
 include("config.php");
-
 function callback($buffer, $mode)
 {
 	$load = pluginManager::getPM()->loadedPlugins();
@@ -60,6 +59,10 @@ if(preg_match("/^{([- a-z0-9]*)}\r?\n+\s*/mi", $content[0]))
 	$string = preg_replace("/^{([a-z0-9 -]*)}\r?\n+\s*/mi", "$1", $content[0]);
 $templateExists = preg_match("/(no-template)/i",$string);
 $compressionExists = preg_match("/(compression)/i",$string);
+if(in_array("Menu", pluginManager::getPM()->loadedPlugins()))
+{
+	MenuPlugin::s()->SetPage($this, $content);
+}
 if(preg_match("/^{([- a-z0-9]*)}\r?\n+\s*/mi", $content[0]))
 	unset($content[0]);
 if($Compression)
