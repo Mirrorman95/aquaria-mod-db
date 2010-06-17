@@ -1,7 +1,6 @@
 <?php
 //install directory
-$InstallPath = "http://localhost/usb/dev/";
-$InstallPath = "http://ssd.doesntexist.com:7777/dev_aquaria/";
+$InstallPath = "/dev_aquaria/";
 
 
 
@@ -10,7 +9,7 @@ $InstallPath = "http://ssd.doesntexist.com:7777/dev_aquaria/";
 /*************Application Specific Configuration Options****************/
 /***********************************************************************/
 $SiteTitle = "Aquaria Mod DB";
-$CurrentTheme = "Aquaria";
+$CurrentTheme = "Surrealized Aquaria";
 $Compression = true;
 $dbhost = "localhost";
 $dbuser = "aquaria";

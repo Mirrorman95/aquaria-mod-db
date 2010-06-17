@@ -8,3 +8,4 @@ $href["WWC"] = "[baseurl]WWC.html";
 $href["Development Testing"] = "[baseurl]Test";
 $href["__________"] = "http://example.com";
 $href["Forum"] = "[baseurl]phpbb3";
+?>
