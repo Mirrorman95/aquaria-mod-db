@@ -43,6 +43,7 @@ body {
 		width: 600px; height: 60px;
 		list-style: none;
 		height: 50px;
+		overflow: hidden;
 	}
 
 		#menu li {
